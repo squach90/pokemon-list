@@ -10,7 +10,11 @@ interface Pokemon {
   height: string;
 }
 
-const Page: React.FC<{ pokemons: Pokemon[] }> = ({ pokemons }) => {
+interface PageProps {
+  pokemons: Pokemon[];
+}
+
+const Page: React.FC<PageProps> = ({ pokemons }) => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">Liste des Pokémons</h1>
