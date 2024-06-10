@@ -15,6 +15,8 @@ const Admin: React.FC = () => {
     e.preventDefault();
     const newPokemon = { name, type, description, height, weight };
 
+    console.log("Submitting Pokemon:", newPokemon); // Debug log
+
     const response = await fetch("/api/pokemons", {
       method: "POST",
       headers: {
@@ -29,12 +31,14 @@ const Admin: React.FC = () => {
       setDescription("");
       setHeight("");
       setWeight("");
+    } else {
+      console.error("Failed to submit Pokemon"); // Debug log
     }
   };
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const adminPassword = "SuperLuigi2011"; // Remplacez par votre mot de passe administrateur
+    const adminPassword = "yourpassword"; // Remplacez par votre mot de passe administrateur
     if (password === adminPassword) {
       setIsAuthenticated(true);
     } else {
