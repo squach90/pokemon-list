@@ -1,6 +1,12 @@
-// app/components/PokemonCard.tsx
 import React from "react";
-import { Pokemon } from "../types";
+
+export interface Pokemon {
+  name: string;
+  type: string;
+  description: string;
+  weight: string;
+  height: string;
+}
 
 const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => (
   <div className="border p-4 rounded-md shadow-md">
