@@ -1,4 +1,3 @@
-// page.tsx
 import React from "react";
 import PokemonCard from "./components/PokemonCard";
 
@@ -10,11 +9,26 @@ interface Pokemon {
   height: string;
 }
 
-interface PageProps {
-  pokemons: Pokemon[];
-}
+// Exemple de données de Pokémon pour le rendu initial
+const pokemons: Pokemon[] = [
+  {
+    name: "Pikachu",
+    type: "Electric",
+    description: "A friendly electric-type Pokémon",
+    weight: "6",
+    height: "40",
+  },
+  {
+    name: "Charizard",
+    type: "Fire",
+    description: "A fierce fire-type Pokémon",
+    weight: "90.5",
+    height: "170",
+  },
+  // Ajoutez plus de Pokémon ici
+];
 
-const Page: React.FC<PageProps> = ({ pokemons }) => {
+const Page: React.FC = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">Liste des Pokémons</h1>
