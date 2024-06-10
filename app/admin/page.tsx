@@ -38,7 +38,7 @@ const Admin: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const adminPassword = "yourpassword"; // Remplacez par votre mot de passe administrateur
+    const adminPassword = "SuperLuigi2011"; // Remplacez par votre mot de passe administrateur
     if (password === adminPassword) {
       setIsAuthenticated(true);
     } else {
@@ -70,7 +70,7 @@ const Admin: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Ajouter un Pokémon</h1>
+      <h1 className="text-3xl font-bold mb-4">Ajouter un MiniKom</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block">Nom</label>
