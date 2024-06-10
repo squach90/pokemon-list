@@ -1,4 +1,3 @@
-// Admin.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -9,15 +8,11 @@ const Admin: React.FC = () => {
   const [description, setDescription] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+  const [password, setPassword] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting form...");
-    console.log("Nom:", name);
-    console.log("Type:", type);
-    console.log("Description:", description);
-    console.log("Taille (cm):", height);
-    console.log("Poids (kg):", weight);
     const newPokemon = { name, type, description, height, weight };
 
     const response = await fetch("/api/pokemons", {
@@ -29,16 +24,45 @@ const Admin: React.FC = () => {
     });
 
     if (response.ok) {
-      console.log("Form submitted successfully.");
       setName("");
       setType("");
       setDescription("");
       setHeight("");
       setWeight("");
-    } else {
-      console.error("Failed to submit form:", response.statusText);
     }
   };
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    const adminPassword = "SuperLuigi2011"; // Remplacez par votre mot de passe administrateur
+    if (password === adminPassword) {
+      setIsAuthenticated(true);
+    } else {
+      alert("Mot de passe incorrect");
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="container mx-auto p-4">
+        <h1 className="text-3xl font-bold mb-4">Admin Login</h1>
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div>
+            <label className="block">Mot de passe</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="border p-2 rounded w-full text-black"
+            />
+          </div>
+          <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+            Login
+          </button>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto p-4">
